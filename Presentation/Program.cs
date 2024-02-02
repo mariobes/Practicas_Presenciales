@@ -7,8 +7,7 @@ using Practices.Presentation;
 IUserRepository userRepository = new UserRepository();
 ICompanyRepository companyRepository = new CompanyRepository();
 IUserService userService = new UserService(userRepository);
-ICompanyService companyService = new CompanyService(companyRepository);
-MainMenu mainMenu = new(userService, cryptoSecompanyServicervice);
+//ICompanyService companyService = new CompanyService(companyRepository);
+MainMenu mainMenu = new(userService);
 mainMenu.RegistrationMenu();
 
-Console.log("Hola");

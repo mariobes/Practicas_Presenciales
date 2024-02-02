@@ -1,0 +1,11 @@
+[
+  {
+    "Id": 1,
+    "Name": "mario",
+    "Email": "mario@",
+    "Password": "123",
+    "Phone": "123",
+    "DNI": "123",
+    "Bookings": []
+  }
+]
