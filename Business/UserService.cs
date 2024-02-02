@@ -42,6 +42,47 @@ public class UserService : IUserService
         }
     }
 
+    public bool CheckUserExist(string email)
+    {
+        try
+        {
+            foreach (var user in _repository.GetAllUsers().Values)
+            {
+                if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al comprobar el usuario", e);
+        }
+    }
+
+    public bool CheckLoginUser(string email, string pasword)
+    {
+        try
+        {
+            foreach (var user in _repository.GetAllUsers().Values)
+            {
+                if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
+                    user.Password.Equals(pasword))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al comprobar el usuario", e);
+        }
+    }
+
     public User GetUser(string email)
     {
         try
