@@ -125,9 +125,25 @@ public class CompanyService : ICompanyService
 
     public void SearchCompany()
     {
+        try
+        {
+            string companyName = InputEmpty();
+            Company company = GetCompany(companyName);
 
+            if (company == null)
+            {
+                Console.WriteLine("No se ha encontrado ninguna compañía por ese nombre\n");
+            }
+            else
+            {
+                Console.WriteLine($"Nombre: {company.Name}, Fecha de fundación: {company.FoundationDate}, Número de empleados: {company.EmployeeCount}\n");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al buscar la compañía", e);
+        }
     }
-
     public string InputEmpty()
     {
         try

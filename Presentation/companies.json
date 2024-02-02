@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "Id": 1,
+    "Name": "a",
+    "Password": "a",
+    "FoundationDate": "2024-02-02T16:20:47.6612279+01:00",
+    "EmployeeCount": "a",
+    "Website": true
+  },
+  {
+    "Id": 2,
+    "Name": "b",
+    "Password": "b",
+    "FoundationDate": "2024-02-02T16:21:41.8084237+01:00",
+    "EmployeeCount": "b",
+    "Website": true
+  }
+]

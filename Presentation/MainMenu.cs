@@ -1,4 +1,5 @@
 ﻿using Practices.Business;
+using Practices.Models;
 
 namespace Practices.Presentation;
 public class MainMenu
@@ -73,6 +74,8 @@ public class MainMenu
                 if (email.Contains("@"))
                 {
                     _userService.RegisterUser(name, email, password, phone, dni);
+                    UserMenu userMenu = new(_userService, _companyService);
+                    userMenu.MainUserMenu(email);
                     Console.WriteLine("Usuario registrado con éxito!");
                 }
                 else
@@ -120,6 +123,8 @@ public class MainMenu
             else
             {
                 _companyService.RegisterCompany(name, password, employeeCount, website);
+                CompanyMenu companyMenu = new(_userService, _companyService);
+                companyMenu.MainCompanyMenu(name);
                 Console.WriteLine("¡Compañía registrada con éxito!");
             }
         break;
@@ -145,7 +150,8 @@ public class MainMenu
             string password = _userService.InputEmpty();
             if (_userService.CheckLoginUser(email, password))
             {
-                Console.Write("Has iniciado sesión como usuario");
+                UserMenu userMenu = new(_userService, _companyService);
+                userMenu.MainUserMenu(email);
             } 
             else
             {
@@ -160,8 +166,8 @@ public class MainMenu
             password = _companyService.InputEmpty();
             if (_companyService.CheckLoginCompany(name, password))
             {
-                Console.Write("Has iniciado sesión como compañía");
-            } 
+                CompanyMenu companyMenu = new(_userService, _companyService);
+                companyMenu.MainCompanyMenu(name);            } 
             else
             {
                 Console.WriteLine("El correo o la contraseña introducida es incorrecta.");
