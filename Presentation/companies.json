@@ -6,6 +6,15 @@
     "FoundationDate": "2024-02-02T18:53:36.2890638+01:00",
     "EmployeeCount": "a",
     "Website": true,
-    "Flights": []
+    "Flights": [
+      {
+        "Id": 1,
+        "Origin": "swc",
+        "Destination": "cwe",
+        "DepartureDate": "2333-03-01T00:00:00",
+        "ReturnDate": "2333-03-01T00:00:00",
+        "Amount": 4
+      }
+    ]
   }
 ]

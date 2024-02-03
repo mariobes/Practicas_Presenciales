@@ -180,6 +180,23 @@ public class CompanyService : ICompanyService
             throw new Exception("Ha ocurrido un error al asignar el ID", e);
         }
     }
+
+    public void PrintAllFlights(Company company)
+    {
+        try
+        {
+            List<Booking> allFlights = company.Flights;
+            Console.WriteLine("Lista de vuelos disponibles:\n");
+            foreach (var flight in allFlights)
+            {
+                Console.WriteLine($"ID: {flight.Id}, Origen: {flight.Origin}, Destino: {flight.Destination}, Fecha de partida: {flight.DepartureDate}, Fecha de regreso: {flight.ReturnDate}, Coste: {flight.Amount}\n");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al obtener los vuelos", e);
+        }   
+    }
     
     public string InputEmpty()
     {

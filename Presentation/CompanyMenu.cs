@@ -21,9 +21,8 @@ public class CompanyMenu
 
         Console.WriteLine($"¡Hola, {currentCompany.Name}!\n");
         Console.WriteLine("1. Nuevo vuelo");
-        Console.WriteLine("2. Borrar vuelo");
-        Console.WriteLine("3. Ver todos los vuelos");
-        Console.WriteLine("4. Cerrar sesión");
+        Console.WriteLine("2. Ver todos los vuelos");
+        Console.WriteLine("3. Cerrar sesión");
         SelectCompanyMenuOption(Console.ReadLine());
     }
 
@@ -37,12 +36,10 @@ public class CompanyMenu
             RegisterFlight();
         break;
         case "2":
-            DeleteFlight();
+            _companyService.PrintAllFlights(currentCompany);
+            MainCompanyMenu(currentCompany.Name);
         break;
         case "3":
-            GetAllFlights();
-        break;
-        case "4":
             Console.WriteLine("Has cerrado sesión"); 
             mainMenu.RegistrationMenu();
         break;
@@ -64,7 +61,7 @@ public class CompanyMenu
         Console.WriteLine("Introduce la fecha de salida: ");
         DateTime departureDate = CheckDate();
 
-        Console.WriteLine("Introduce la fecha de llegada: ");
+        Console.WriteLine("Introduce la fecha de regreso: ");
         DateTime returnDate = CheckDate();
 
         Console.WriteLine("Introduce el precio: ");
@@ -76,16 +73,6 @@ public class CompanyMenu
 
         _companyService.RegisterFlight(currentCompany, origin, destination, departureDate, returnDate, amount);
         MainCompanyMenu(currentCompany.Name);
-    }
-
-    private void DeleteFlight()
-    {
-        
-    }
-
-    private void GetAllFlights()
-    {
-        
     }
 
     private DateTime CheckDate()

@@ -13,5 +13,6 @@ public interface ICompanyService
     void UpdateCompany(string name, string newName, string newPassword, string newEmployeeCount, bool newWebsite);
     void SearchCompany();
     void RegisterFlight(Company company, string origin, string destination, DateTime departureDate, DateTime returnDate, double amount);
+    void PrintAllFlights(Company company);
     string InputEmpty();
 }
