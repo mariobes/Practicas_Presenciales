@@ -37,7 +37,7 @@ public class UserMenu
         switch (option)
         {
         case "1":
-            
+            UpdateUser(currentUser.Email);
         break;
         case "2":
             _companyService.PrintAllCompanies();
@@ -59,14 +59,53 @@ public class UserMenu
             _userService.DeleteUser(currentUser.Email);    
             mainMenu.RegistrationMenu();
         break;
-        case "7":            
-            
+        case "7":    
+            Console.WriteLine("Has cerrado sesión");        
+            mainMenu.RegistrationMenu();
         break;
         default:
             Console.WriteLine("Introduce una opción válida");
             SelectUserMenuOption(Console.ReadLine());
         break;
         }
+    }
+
+    private void UpdateUser(string email)
+    {
+        Console.Write("Nombre: ");
+        string newName = _userService.InputEmpty();
+    
+        Console.Write("Dirección de correo: ");
+        string newEmail = _userService.InputEmpty();
+
+        Console.Write("Contraseña: ");
+        string newPassword = _userService.InputEmpty();
+
+        Console.Write("Número de teléfono: ");
+        string newPhone = _userService.InputEmpty();
+
+        Console.Write("DNI: ");
+        string newDni = _userService.InputEmpty();
+
+        if (_userService.CheckUserExist(newEmail))
+        {
+            Console.WriteLine("Error, ya existe una cuenta asociada al correo introducido.");
+        }
+        else
+        {
+            if (newEmail.Contains("@"))
+            {
+                _userService.UpdateUser(email, newName, newEmail, newPassword, newPhone, newDni);
+                Console.WriteLine("Usuario actualizado con éxito!");
+            }
+            else
+            {
+                Console.WriteLine("Error, el correo debe de contener @.");
+            }
+        }
+
+        MainUserMenu(currentUser.Email);
+
     }
 
 

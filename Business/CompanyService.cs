@@ -141,9 +141,46 @@ public class CompanyService : ICompanyService
         }
         catch (Exception e)
         {
-            throw new Exception("Ha ocurrido un error al buscar la compañía", e);
         }
     }
+
+    public void RegisterFlight(Company company, string origin, string destination, DateTime departureDate, DateTime returnDate, double amount)
+    {
+        try
+        {
+            AssignId(company);
+
+            Booking booking = new(origin, destination, departureDate, returnDate, amount);
+            company.Flights.Add(booking); 
+            _repository.UpdateCompany(company);
+            _repository.SaveChanges();
+            Console.WriteLine("Vuelo registrado con éxito.");
+        }            
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al registrar el vuelo", e);
+        }
+    }
+
+    private void AssignId(Company company)
+    {
+        try
+        {
+            if (company.Flights.Count == 0)
+            {
+                Booking.BookingIdSeed = 1;
+            }
+            else
+            {
+                Booking.BookingIdSeed = company.Flights.Count + 1;
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al asignar el ID", e);
+        }
+    }
+    
     public string InputEmpty()
     {
         try

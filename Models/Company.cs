@@ -7,6 +7,7 @@ public class Company
     public DateTime FoundationDate { get; set; }
     public string? EmployeeCount { get; set; }
     public bool Website { get; set; }
+    public List<Booking> Flights { get; set; }
 
     public static int CompanyIdSeed { get; set; }
 
@@ -20,5 +21,6 @@ public class Company
         FoundationDate = DateTime.Now;
         EmployeeCount = employeeCount;
         Website = website;
+        Flights = new List<Booking>();
     }
 }

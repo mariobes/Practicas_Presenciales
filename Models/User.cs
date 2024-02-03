@@ -8,7 +8,7 @@ public class User
     public string? Password { get; set; }
     public string? Phone { get; set; }
     public string? DNI { get; set; }
-    public List<Booking> Bookings { get; set; }
+    public List<Booking> MyBookings { get; set; }
 
     public static int UserIdSeed { get; set; }
 
@@ -22,6 +22,6 @@ public class User
         Password = password;
         Phone = phone;
         DNI = dni;
-        Bookings = new List<Booking>();
+        MyBookings = new List<Booking>();
     }
 }

@@ -114,6 +114,11 @@ public class UserService : IUserService
         try 
         {
             User userToUpdate = _repository.GetUser(userEmail);
+            userToUpdate.Name = newName;
+            userToUpdate.Email = newEmail;
+            userToUpdate.Password = newPassword;
+            userToUpdate.DNI = newDNI;
+            userToUpdate.Phone = newPhone;
             _repository.UpdateUser(userToUpdate);
             _repository.SaveChanges();
         }
